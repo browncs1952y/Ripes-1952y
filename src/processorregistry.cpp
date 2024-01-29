@@ -2,6 +2,7 @@
 
 #include <QPolygonF>
 
+#include "processors/CS1952y/HW1c/hw1c_circuit.h"
 #include "processors/RISC-V/rv5s/rv5s.h"
 #include "processors/RISC-V/rv5s_no_fw/rv5s_no_fw.h"
 #include "processors/RISC-V/rv5s_no_fw_hz/rv5s_no_fw_hz.h"
@@ -45,6 +46,16 @@ ProcessorRegistry::ProcessorRegistry() {
   // Initialize processors
   std::vector<Layout> layouts;
   RegisterInitialization defRegVals;
+
+  // PROCESSORS FOR CS1952y
+  // Basic circuit for HW1c
+  layouts = {{"Standard",
+              ":/layouts/CS1952y/HW1c/hw1c_circuit_layout.json",
+              {{{0, 0}, QPointF{0.5, 0}}}}};
+  defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
+  addProcessor(ProcInfo<vsrtl::core::HW1cCircuit<uint32_t>>(
+      ProcessorID::HW1C, "HW1c circuit",
+      "Circuit for HW1c bounds checker component", layouts, defRegVals));
 
   // RISC-V single cycle
   layouts = {{"Standard",
