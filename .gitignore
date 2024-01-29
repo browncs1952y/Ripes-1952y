@@ -17,3 +17,13 @@ qrc_*
 Ripes
 RipesTest
 libRipesLib.a
+
+# cmake and autogen
+*_autogen
+*.a
+CMakeFiles
+*.cmake
+!src/version/version.cmake
+CMakeCache.txt
+*.qrc.depends
+compile_commands.json
