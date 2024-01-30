@@ -52,6 +52,7 @@ endmacro()
 
 # RISC-V Processors
 create_isa_lib(RISC-V)
+create_vsrtl_processor(RISC-V hw1c)
 create_vsrtl_processor(RISC-V rvss)
 create_vsrtl_processor(RISC-V rv5s)
 create_vsrtl_processor(RISC-V rv5s_no_fw_hz)
