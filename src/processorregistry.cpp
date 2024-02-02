@@ -3,6 +3,8 @@
 #include <QPolygonF>
 
 #include "processors/CS1952y/HW1c/hw1c_circuit.h"
+#include "processors/CS1952y/single_stage_cpu/cs1952y1s_cpu.h"
+
 #include "processors/RISC-V/rv5s/rv5s.h"
 #include "processors/RISC-V/rv5s_no_fw/rv5s_no_fw.h"
 #include "processors/RISC-V/rv5s_no_fw_hz/rv5s_no_fw_hz.h"
@@ -51,11 +53,37 @@ ProcessorRegistry::ProcessorRegistry() {
   // Basic circuit for HW1c
   layouts = {{"Standard",
               ":/layouts/CS1952y/HW1c/hw1c_circuit_layout.json",
-              {{{0, 0}, QPointF{0.5, 0}}}}};
+              {{{0, 0}, QPointF{0.1, 0}}}}};
   defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
   addProcessor(ProcInfo<vsrtl::core::HW1cCircuit<uint32_t>>(
       ProcessorID::HW1C, "HW1c circuit",
       "Circuit for HW1c bounds checker component", layouts, defRegVals));
+
+    layouts = {{"Standard",
+                ":/layouts/CS1952y/single_stage_cpu/cs1952y1s_layout.json",
+                {{{0, 0}, QPointF{0.1, 0}}}},
+                {"Step 0",
+                ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_0.json",
+                {{{0, 0}, QPointF{0.1, 0}}}},
+                {"Step 1",
+                ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_1.json",
+                {{{0, 0}, QPointF{0.1, 0}}}},
+                {"Step 2a",
+                ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_2a.json",
+                {{{0, 0}, QPointF{0.1, 0}}}},
+                {"Step 2b",
+                ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_2b.json",
+                {{{0, 0}, QPointF{0.1, 0}}}},
+                {"Step 3",
+                ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_3.json",
+                {{{0, 0}, QPointF{0.1, 0}}}},
+                {"Step 4",
+                ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_4.json",
+                {{{0, 0}, QPointF{0.1, 0}}}}};
+    defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
+    addProcessor(ProcInfo<vsrtl::core::CS1952y1sCPU<uint32_t>>(
+        ProcessorID::CS1952y1s, "CS1952y 1s CPU",
+        "Single-stage CPU (built from scratch in CS1952y!)", layouts, defRegVals));
 
   // RISC-V single cycle
   layouts = {{"Standard",

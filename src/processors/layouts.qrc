@@ -1,6 +1,13 @@
 <RCC>
     <qresource prefix="/layouts">
         <file>CS1952y/HW1c/hw1c_circuit_layout.json</file>
+        <file>CS1952y/single_stage_cpu/cs1952y1s_layout.json</file>
+        <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_0.json</file>
+        <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_1.json</file>
+        <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_2a.json</file>
+        <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_2b.json</file>
+        <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_3.json</file>
+        <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_4.json</file>
         <file>RISC-V/rvss/rv_ss_extended_layout.json</file>
         <file>RISC-V/rvss/rv_ss_standard_layout.json</file>
         <file>RISC-V/rv5s/rv5s_standard_layout.json</file>
