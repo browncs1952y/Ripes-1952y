@@ -76,9 +76,6 @@ ProcessorRegistry::ProcessorRegistry() {
                 {{{0, 0}, QPointF{0.1, 0}}}},
                 {"Step 3",
                 ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_3.json",
-                {{{0, 0}, QPointF{0.1, 0}}}},
-                {"Step 4",
-                ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_4.json",
                 {{{0, 0}, QPointF{0.1, 0}}}}};
     defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
     addProcessor(ProcInfo<vsrtl::core::CS1952y1sCPU<uint32_t>>(
