@@ -4,7 +4,6 @@
 
 #include "processors/CS1952y/HW1c/hw1c_circuit.h"
 #include "processors/CS1952y/single_stage_cpu/cs1952y1s_cpu.h"
-#include "processors/CS1952y/five_stage_cpu/cs1952y5s_cpu.h"
 
 #include "processors/RISC-V/rv5s/rv5s.h"
 #include "processors/RISC-V/rv5s_no_fw/rv5s_no_fw.h"
@@ -94,29 +93,6 @@ ProcessorRegistry::ProcessorRegistry() {
     addProcessor(ProcInfo<vsrtl::core::CS1952y1sCPU<uint32_t>>(
         ProcessorID::CS1952y1s, "CS1952y 1s CPU",
         "Single-stage CPU (built from scratch in CS1952y!)", layouts, defRegVals));
-
-    std::map<StageIndex, QPointF> stageLabelPosns = 
-        {{{0, 0}, QPointF{0.05, 2}},
-        {{0, 1}, QPointF{0.28, 2}},
-        {{0, 2}, QPointF{0.54, 2}},
-        {{0, 3}, QPointF{0.74, 2}},
-        {{0, 4}, QPointF{0.88, 2}}};
-    layouts = {{"Standard (Step 4)",
-                ":/layouts/CS1952y/five_stage_cpu/cs1952y5s_layout.json",
-                stageLabelPosns},
-                {"Step 1",
-                ":/layouts/CS1952y/five_stage_cpu/layouts/cs1952y5s_layout_1.json",
-                stageLabelPosns},
-                {"Step 2",
-                ":/layouts/CS1952y/five_stage_cpu/layouts/cs1952y5s_layout_2.json",
-                stageLabelPosns},
-                {"Step 3",
-                ":/layouts/CS1952y/five_stage_cpu/layouts/cs1952y5s_layout_3.json",
-                stageLabelPosns}};
-    defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
-    addProcessor(ProcInfo<vsrtl::core::CS1952y5sCPU<uint32_t>>(
-        ProcessorID::CS1952y5s, "CS1952y 5s CPU",
-        "Five-stage pipelined CPU (build in CS1952y!)", layouts, defRegVals));
 
   // RISC-V single cycle
   layouts = {{"Standard",
