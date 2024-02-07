@@ -12,10 +12,10 @@
 #include "../../RISC-V/rv_memory.h"
 #include "../../RISC-V/rv_registerfile.h"
 
-#include "cs1952y_alu.h"
 #include "cs1952y1s_control.h"
 #include "cs1952y1s_decode.h"
 #include "cs1952y1s_enums.h"
+#include "cs1952y_alu.h"
 
 namespace vsrtl {
 namespace core {
@@ -30,8 +30,8 @@ class CS1952y1sCPU : public RipesVSRTLProcessor {
 public:
   CS1952y1sCPU(const QStringList &extensions)
       : RipesVSRTLProcessor("CS1952y RISC-V processor (from scratch)") {
-    m_enabledISA = std::make_shared<ISAInfo<XLenToRVISA<XLEN>()>>(extensions);    
-    
+    m_enabledISA = std::make_shared<ISAInfo<XLenToRVISA<XLEN>()>>(extensions);
+
     // ** ADVANCING THE PC **
     pc_inc->out >> pc_reg->in;
     pc_reg->out >> pc_inc->op1;
@@ -49,7 +49,7 @@ public:
 
     // Immediates
     decode->imm_I >> imm_sel->get(ImmSel::I);
-    decode->imm_Ishift >>  imm_sel->get(ImmSel::Ishift);
+    decode->imm_Ishift >> imm_sel->get(ImmSel::Ishift);
     decode->imm_U >> imm_sel->get(ImmSel::U);
     control->imm_sel >> imm_sel->select;
 
@@ -66,7 +66,7 @@ public:
     data_mem->data_out >> rd_sel->get(RdSel::MEM);
     control->rd_sel >> rd_sel->select;
     rd_sel->out >> registers->data_in;
-    
+
     // ** ALU **
     // Select op2
     registers->r2_out >> alu_op2_sel->get(ALU2Sel::REG2);
@@ -76,14 +76,14 @@ public:
     registers->r1_out >> alu->op1;
     alu_op2_sel->out >> alu->op2;
     control->alu_ctrl >> alu->ctrl;
-    
+
     // Data memory
     data_mem->mem->setMemory(m_memory);
     alu->res >> data_mem->addr;
-    0 >> data_mem -> data_in;
+    0 >> data_mem->data_in;
     0 >> data_mem->wr_en;
     control->mem_op >> data_mem->op;
-    
+
     decode->ecall >> ecallChecker->opcode;
     ecallChecker->setSyscallCallback(&trapHandler);
     0 >> ecallChecker->stallEcallHandling;
@@ -94,10 +94,10 @@ public:
   SUBCOMPONENT(pc_inc, Adder<XLEN>);
 
   // Decode and Control
-  SUBCOMPONENT(decode,  CS1952y1sDecode<XLEN>);
+  SUBCOMPONENT(decode, CS1952y1sDecode<XLEN>);
   SUBCOMPONENT(control, CS1952y1sControl<XLEN>);
   SUBCOMPONENT(imm_sel, TYPE(EnumMultiplexer<ImmSel, XLEN>));
-  
+
   // Register File
   SUBCOMPONENT(registers, TYPE(RegisterFile<XLEN, false>));
   SUBCOMPONENT(rd_sel, TYPE(EnumMultiplexer<RdSel, XLEN>));
@@ -105,15 +105,15 @@ public:
   // ALU
   SUBCOMPONENT(alu_op2_sel, TYPE(EnumMultiplexer<ALU2Sel, XLEN>));
   SUBCOMPONENT(alu, TYPE(CS1952yALU<XLEN>));
-  
+
   // Address spaces
   ADDRESSSPACEMM(m_memory);
   ADDRESSSPACE(m_regMem);
-  
+
   // Memories
   SUBCOMPONENT(instr_mem, TYPE(ROM<XLEN, c_RVInstrWidth>));
   SUBCOMPONENT(data_mem, TYPE(RVMemory<XLEN, XLEN>));
-  
+
   SUBCOMPONENT(ecallChecker, EcallChecker);
 
   // Ripes interface compliance

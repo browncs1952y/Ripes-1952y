@@ -12,9 +12,9 @@
 #include "../../RISC-V/rv_memory.h"
 #include "../../RISC-V/rv_registerfile.h"
 
-#include "cs1952y_alu.h"
 #include "cs1952y1s_enums.h"
 #include "cs1952y1s_translate.h"
+#include "cs1952y_alu.h"
 
 namespace vsrtl {
 namespace core {
@@ -29,8 +29,8 @@ class CS1952y1sCPU : public RipesVSRTLProcessor {
 public:
   CS1952y1sCPU(const QStringList &extensions)
       : RipesVSRTLProcessor("CS1952y RISC-V processor (from scratch)") {
-    m_enabledISA = std::make_shared<ISAInfo<XLenToRVISA<XLEN>()>>(extensions);    
-    
+    m_enabledISA = std::make_shared<ISAInfo<XLenToRVISA<XLEN>()>>(extensions);
+
     // ** ADVANCING THE PC **
     pc_inc->out >> pc_reg->in;
     pc_reg->out >> pc_inc->op1;
@@ -50,19 +50,19 @@ public:
     translate->rd1 >> registers->wr_addr;
     alu->res >> registers->data_in;
     1 >> registers->wr_en;
-    
+
     // ** ALU **
     registers->r1_out >> alu->op1;
     translate->imm >> alu->op2;
     translate->alu_ctrl >> alu->ctrl;
-    
+
     // Data memory
     data_mem->mem->setMemory(m_memory);
     0 >> data_mem->addr;
-    0 >> data_mem -> data_in;
+    0 >> data_mem->data_in;
     0 >> data_mem->wr_en;
     MemOp::NOP >> data_mem->op;
-    
+
     translate->ecall >> ecallChecker->opcode;
     ecallChecker->setSyscallCallback(&trapHandler);
     0 >> ecallChecker->stallEcallHandling;
@@ -73,22 +73,22 @@ public:
   SUBCOMPONENT(pc_inc, Adder<XLEN>);
 
   // Translator
-  SUBCOMPONENT(translate,  CS1952y1sTranslate<XLEN>);
-  
+  SUBCOMPONENT(translate, CS1952y1sTranslate<XLEN>);
+
   // Register File
   SUBCOMPONENT(registers, TYPE(RegisterFile<XLEN, false>));
 
   // ALU
   SUBCOMPONENT(alu, TYPE(CS1952yALU<XLEN>));
-  
+
   // Address spaces
   ADDRESSSPACEMM(m_memory);
   ADDRESSSPACE(m_regMem);
-  
+
   // Memories
   SUBCOMPONENT(instr_mem, TYPE(ROM<XLEN, c_RVInstrWidth>));
   SUBCOMPONENT(data_mem, TYPE(RVMemory<XLEN, XLEN>));
-  
+
   SUBCOMPONENT(ecallChecker, EcallChecker);
 
   // Ripes interface compliance

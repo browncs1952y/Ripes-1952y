@@ -5,6 +5,6 @@
 namespace vsrtl {
 namespace core {
 using namespace Ripes;
-    Enum(ALU2Sel, REG2, IMM);
-}
-}
+Enum(ALU2Sel, REG2, IMM);
+} // namespace core
+} // namespace vsrtl

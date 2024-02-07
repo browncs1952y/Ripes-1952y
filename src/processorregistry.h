@@ -25,6 +25,9 @@ QString enumToString(T value) {
 enum ProcessorID {
   HW1C,
   CS1952y1s,
+  CS1952y5s,
+  CS1952y4s,
+  CS1952y6s,
   RV32_SS,
   RV32_5S_NO_FW_HZ,
   RV32_5S_NO_HZ,

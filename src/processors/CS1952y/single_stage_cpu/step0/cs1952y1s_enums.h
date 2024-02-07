@@ -7,4 +7,4 @@ namespace core {
 using namespace Ripes;
 
 }
-}
+} // namespace vsrtl

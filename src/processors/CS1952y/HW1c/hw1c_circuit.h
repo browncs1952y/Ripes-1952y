@@ -39,24 +39,24 @@ public:
     pc_inc->out >> pc_reg->in;
     pc_reg->out >> pc_inc->op1;
     4 >> pc_inc->op2;
-    
+
     /*
-    * Because of how VSTRL resolves components, we need to have a connected graph
-    * with the register file in order for the register file to give valid info.
-    * We hack this by connecting the pc_reg to the second register address of the 
-    * register file
-    */
+     * Because of how VSTRL resolves components, we need to have a connected
+     * graph with the register file in order for the register file to give valid
+     * info. We hack this by connecting the pc_reg to the second register
+     * address of the register file
+     */
     pc_reg->out >> d->in;
     // Only get the first 5 bits of pc_reg
     for (int i = 0; i < 5; i++) {
-        *d->out[i] >> *c->in[i];
+      *d->out[i] >> *c->in[i];
     }
     c->out >> registerFile->r2_addr;
 
     // use x10 as the input to the bounds check
     0x0a >> registerFile->r1_addr;
     registerFile->r1_out >> bc->in_val;
-    
+
     // Use the overflow flag to determine which register is written to
     bc->overflow >> of_mux->select;
     0xb >> *of_mux->ins[0];
@@ -64,27 +64,26 @@ public:
 
     // Write bounds check output
     1 >> registerFile->wr_en;
-    of_mux->out >> registerFile->wr_addr;  
+    of_mux->out >> registerFile->wr_addr;
     bc->res_val >> registerFile->data_in;
-    
+
     // Data memory (unused)
     0 >> data_mem->addr;
-    0 >> data_mem -> data_in;
-    0 >> data_mem -> wr_en;
-    MemOp::NOP >> data_mem -> op;
-    
+    0 >> data_mem->data_in;
+    0 >> data_mem->wr_en;
+    MemOp::NOP >> data_mem->op;
+
     // ecall checker (unused)
     RVInstr::NOP >> ecallChecker->opcode;
     ecallChecker->setSyscallCallback(&trapHandler);
     0 >> ecallChecker->stallEcallHandling;
-    
   }
 
   SUBCOMPONENT(bc, BoundsCheck);
   SUBCOMPONENT(d, Decollator<XLEN>);
   SUBCOMPONENT(c, Collator<5>);
   SUBCOMPONENT(of_mux, TYPE(Multiplexer<2, 5>));
-  
+
   // Memories
   ADDRESSSPACEMM(m_memory);
   ADDRESSSPACE(m_regMem);
@@ -93,7 +92,7 @@ public:
   SUBCOMPONENT(data_mem, TYPE(RVMemory<XLEN, XLEN>));
   SUBCOMPONENT(pc_reg, Register<XLEN>);
   SUBCOMPONENT(pc_inc, Adder<XLEN>);
-  
+
   SUBCOMPONENT(ecallChecker, EcallChecker);
 
   // Ripes interface compliance
