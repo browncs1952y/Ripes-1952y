@@ -2,6 +2,7 @@
 
 #include "../../RISC-V/riscv.h"
 #include "VSRTL/core/vsrtl_component.h"
+#include "../five_stage_cpu/cs1952y5s_enums.h"
 #include <iostream>
 
 namespace vsrtl {
