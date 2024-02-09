@@ -20,8 +20,8 @@ public:
     fwd2_sel << [=] { return FwdSel::NoFwd; }; // fwd2_sel
   }
 
-  INPUTPORT(idex_rs1_id, 5);
-  INPUTPORT(idex_rs2_id, 5);
+  INPUTPORT(rrex_rs1_id, 5);
+  INPUTPORT(rrex_rs2_id, 5);
 
   INPUTPORT(exmem_rd_id, 5);
   INPUTPORT(exmem_reg_wr, 1);

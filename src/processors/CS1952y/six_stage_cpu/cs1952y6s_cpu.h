@@ -176,8 +176,8 @@ public:
     
     // ALU
     // Forwarding
-    rrex_reg->rs1_id_out >> forward->idex_rs1_id;
-    rrex_reg->rs2_id_out >> forward->idex_rs2_id;
+    rrex_reg->rs1_id_out >> forward->rrex_rs1_id;
+    rrex_reg->rs2_id_out >> forward->rrex_rs2_id;
     exmem_reg->rd_id_out >> forward->exmem_rd_id;
     exmem_reg->reg_wr_out >> forward->exmem_reg_wr;
     exmem_reg->rd_sel_out >> forward->exmem_rd_sel;
