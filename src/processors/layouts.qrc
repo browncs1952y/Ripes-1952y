@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/layouts">
-        <file>CS1952y/HW1c/hw1c_circuit_layout.json</file>
+        <file>CS1952y/HW1d/hw1d_circuit_layout.json</file>
         <file>CS1952y/single_stage_cpu/cs1952y1s_layout.json</file>
         <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_0.json</file>
         <file>CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_1.json</file>

@@ -52,7 +52,7 @@ endmacro()
 
 # RISC-V Processors
 create_isa_lib(RISC-V)
-create_vsrtl_processor(RISC-V hw1c)
+create_vsrtl_processor(RISC-V hw1d)
 create_vsrtl_processor(RISC-V cs1952y1s)
 create_vsrtl_processor(RISC-V cs1952y5s)
 create_vsrtl_processor(RISC-V cs1952y4s)

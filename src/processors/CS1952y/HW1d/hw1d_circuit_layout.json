@@ -1,7 +1,7 @@
 {
     "m_layoutVersion": 1,
     "ComponentGraphic": {
-        "Top name": "HW1c circuit",
+        "Top name": "HW1d circuit",
         "Expanded": true,
         "Rect": {
             "x": 0,
@@ -147,7 +147,7 @@
                 "PortWidthVisible": true
             },
             "overflow_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -185,7 +185,7 @@
                 ]
             },
             "res_val_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -515,7 +515,7 @@
                 "PortWidthVisible": true
             },
             "out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1772,7 +1772,7 @@
                 "PortWidthVisible": true
             },
             "in_4_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1798,7 +1798,7 @@
                 ]
             },
             "in_5_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1811,7 +1811,7 @@
                 "wires": []
             },
             "in_6_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1824,7 +1824,7 @@
                 "wires": []
             },
             "in_7_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1837,7 +1837,7 @@
                 "wires": []
             },
             "in_8_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1850,7 +1850,7 @@
                 "wires": []
             },
             "in_9_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1863,7 +1863,7 @@
                 "wires": []
             },
             "in_10_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1876,7 +1876,7 @@
                 "wires": []
             },
             "in_11_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1889,7 +1889,7 @@
                 "wires": []
             },
             "in_12_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1902,7 +1902,7 @@
                 "wires": []
             },
             "in_0_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1928,7 +1928,7 @@
                 ]
             },
             "in_1_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1954,7 +1954,7 @@
                 ]
             },
             "in_2_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -1980,7 +1980,7 @@
                 ]
             },
             "in_3_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2006,7 +2006,7 @@
                 ]
             },
             "in_13_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2019,7 +2019,7 @@
                 "wires": []
             },
             "in_14_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2032,7 +2032,7 @@
                 "wires": []
             },
             "in_15_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2045,7 +2045,7 @@
                 "wires": []
             },
             "in_16_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2058,7 +2058,7 @@
                 "wires": []
             },
             "in_17_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2071,7 +2071,7 @@
                 "wires": []
             },
             "in_18_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2084,7 +2084,7 @@
                 "wires": []
             },
             "in_19_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2097,7 +2097,7 @@
                 "wires": []
             },
             "in_20_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2110,7 +2110,7 @@
                 "wires": []
             },
             "in_21_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2123,7 +2123,7 @@
                 "wires": []
             },
             "in_22_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2136,7 +2136,7 @@
                 "wires": []
             },
             "in_23_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2149,7 +2149,7 @@
                 "wires": []
             },
             "in_24_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2162,7 +2162,7 @@
                 "wires": []
             },
             "in_25_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2175,7 +2175,7 @@
                 "wires": []
             },
             "in_26_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2188,7 +2188,7 @@
                 "wires": []
             },
             "in_27_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2201,7 +2201,7 @@
                 "wires": []
             },
             "in_28_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2214,7 +2214,7 @@
                 "wires": []
             },
             "in_29_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2227,7 +2227,7 @@
                 "wires": []
             },
             "in_30_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -2240,7 +2240,7 @@
                 "wires": []
             },
             "in_31_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -3572,7 +3572,7 @@
                 "Indicators": []
             },
             "data_out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -3772,7 +3772,7 @@
                 "PortWidthVisible": true
             },
             "dummy_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -3785,7 +3785,7 @@
                 "wires": []
             },
             "syscallExit_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -3913,7 +3913,7 @@
                 "PortWidthVisible": true
             },
             "data_out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -4118,7 +4118,7 @@
                 "PortWidthVisible": true
             },
             "out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -4307,7 +4307,7 @@
                 "PortWidthVisible": true
             },
             "out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -4459,7 +4459,7 @@
                 "PortWidthVisible": true
             },
             "out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -5639,7 +5639,7 @@
                 "Indicators": []
             },
             "r1_out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -5688,7 +5688,7 @@
                 ]
             },
             "r2_out_out_wire": {
-                "Parent": "HW1c circuit",
+                "Parent": "HW1d circuit",
                 "From port": {
                     "first": 0,
                     "second": [
@@ -5722,7 +5722,7 @@
             "Italic": false,
             "PtSize": 14,
             "Text": {
-                "str": "HW1c circuit"
+                "str": "HW1d circuit"
             },
             "Pos": {
                 "x": 27.636363636363627,

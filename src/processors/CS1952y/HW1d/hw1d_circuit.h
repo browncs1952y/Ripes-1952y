@@ -19,14 +19,14 @@ namespace core {
 using namespace Ripes;
 
 template <typename XLEN_T>
-class HW1cCircuit : public RipesVSRTLProcessor {
+class HW1dCircuit : public RipesVSRTLProcessor {
   static_assert(std::is_same<uint32_t, XLEN_T>::value,
                 "Only supports 32-bit variant");
   static constexpr unsigned XLEN = sizeof(XLEN_T) * CHAR_BIT;
 
 public:
-  HW1cCircuit(const QStringList &extensions)
-      : RipesVSRTLProcessor("HW1c circuit") {
+  HW1dCircuit(const QStringList &extensions)
+      : RipesVSRTLProcessor("HW1d circuit") {
     m_enabledISA = std::make_shared<ISAInfo<XLenToRVISA<XLEN>()>>(extensions);
 
     // Required memories

@@ -23,7 +23,7 @@ QString enumToString(T value) {
 // The order of the ProcessorID enum defines the order of which the processors
 // will appear in the processor selection dialog.
 enum ProcessorID {
-  HW1C,
+  HW1D,
   CS1952y1s,
   CS1952y5s,
   CS1952y4s,
