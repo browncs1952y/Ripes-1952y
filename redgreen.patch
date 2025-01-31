@@ -1,0 +1,64 @@
+diff -ru ./external/VSRTL/graphics/vsrtl_componentgraphic.cpp ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_componentgraphic.cpp
+--- ./external/VSRTL/graphics/vsrtl_componentgraphic.cpp	2025-01-17 11:47:30.417663802 -0500
++++ ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_componentgraphic.cpp	2025-01-23 15:44:56.757981451 -0500
+@@ -629,7 +629,7 @@
+ 
+   // Paint boolean indicators
+   for (const auto &p : m_indicators) {
+-    paintIndicator(painter, p, p->getPort()->uValue() ? Qt::green : Qt::red);
++    paintIndicator(painter, p, p->getPort()->uValue() ? QColor{87,196,173} : QColor{219,67,37});
+   }
+ 
+   // Paint overlay
+@@ -637,7 +637,7 @@
+ 
+ #ifdef VSRTL_DEBUG_DRAW
+   painter->save();
+-  painter->setPen(Qt::green);
++  painter->setPen(QColor{87,196,173});
+   painter->drawRect(sceneGridRect());
+   painter->restore();
+   DRAW_BOUNDING_RECT(painter)
+diff -ru ./external/VSRTL/graphics/vsrtl_graphics_defines.h ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_graphics_defines.h
+--- ./external/VSRTL/graphics/vsrtl_graphics_defines.h	2025-01-17 11:47:30.417663802 -0500
++++ ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_graphics_defines.h	2025-01-23 15:47:59.517171152 -0500
+@@ -8,7 +8,7 @@
+ 
+ #define DRAW_BOUNDING_RECT(painter)                                            \
+   painter->save();                                                             \
+-  painter->setPen(QPen(Qt::red, 1));                                           \
++  painter->setPen(QPen(QColor{219,67,37}, 1));                                           \
+   painter->setBrush(Qt::transparent);                                          \
+   painter->drawRect(boundingRect());                                           \
+   painter->restore();
+diff -ru ./external/VSRTL/graphics/vsrtl_multiplexergraphic.cpp ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_multiplexergraphic.cpp
+--- ./external/VSRTL/graphics/vsrtl_multiplexergraphic.cpp	2025-01-17 11:47:30.417663802 -0500
++++ ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_multiplexergraphic.cpp	2025-01-23 15:46:20.966622981 -0500
+@@ -33,13 +33,13 @@
+     const auto *p_base = ip->getPort();
+     if (p_base != select) {
+       if (p_base == inputPorts[index]) {
+-        painter->setBrush(Qt::green);
++        painter->setBrush(QColor{87,196,173});
+       } else {
+         painter->setBrush(Qt::white);
+       }
+ 
+       paintIndicator(painter, ip,
+-                     p_base == inputPorts[index] ? Qt::green : Qt::white);
++                     p_base == inputPorts[index] ? QColor{87,196,173} : Qt::white);
+     }
+   }
+   painter->restore();
+diff -ru ./external/VSRTL/graphics/vsrtl_wiregraphic.cpp ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_wiregraphic.cpp
+--- ./external/VSRTL/graphics/vsrtl_wiregraphic.cpp	2025-01-17 11:47:30.427663808 -0500
++++ ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_wiregraphic.cpp	2025-01-23 15:47:54.807168834 -0500
+@@ -101,7 +101,7 @@
+                         (option->state & QStyle::State_Sunken) ? 120 : 100)));
+ 
+   if (m_draggedOnThis != nullptr) {
+-    pen.setColor(Qt::red);
++    pen.setColor(QColor{219,67,37});
+     painter->setPen(pen);
+     painter->setBrush(Qt::transparent);
+     painter->drawRect(shape().boundingRect().adjusted(

@@ -6,8 +6,7 @@
 
 namespace vsrtl {
 namespace core {
-namespace cs1952y1snotes {
-
+namespace common1sfinal {
 using namespace Ripes;
 
 template <unsigned XLEN>
@@ -37,6 +36,13 @@ public:
              ((instr.uValue() & 0x00100000) >> 9) | // bit 20
              ((instr.uValue() & 0x7fe00000) >> 20); // bits 21 to 30
     };                                              // imm_J
+    imm_B << [=] {
+      return ((instr.sValue() >> 19) &
+              0xfffff000) | // bit 31 (sign-extended to 20 bits)
+             ((instr.uValue() & 0x00000080) << 4) |  // bit 7
+             ((instr.uValue() & 0x7e000000) >> 20) | // bits 25 to 30
+             ((instr.uValue() & 0x00000f00) >> 7);   // bits 8 to 11
+    };
 
     // Opcode and funct fields
     opcode << [=] { return instr.uValue() & 0x007f; };         // bits 0 to 6
@@ -61,12 +67,13 @@ public:
   OUTPUTPORT(imm_U, 32);
   OUTPUTPORT(imm_S, 32);
   OUTPUTPORT(imm_J, 32);
+  OUTPUTPORT(imm_B, 32);
   OUTPUTPORT(opcode, 7);
   OUTPUTPORT(funct3, 3);
   OUTPUTPORT(funct7, 7);
   OUTPUTPORT_ENUM(ecall, RVInstr);
 };
 
-} // namespace cs1952y1snotes
+} // namespace common1sfinal
 } // namespace core
 } // namespace vsrtl

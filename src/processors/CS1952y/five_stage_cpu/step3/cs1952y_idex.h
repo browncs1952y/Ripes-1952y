@@ -8,6 +8,10 @@
 namespace vsrtl {
 namespace core {
 using namespace Ripes;
+using common1sfinal::ALU1Sel;
+using common1sfinal::ALU2Sel;
+using common1sfinal::RdSel;
+using common1sfinal::PCAdd1;
 
 template <unsigned XLEN>
 class CS1952yIDEx : public Component {

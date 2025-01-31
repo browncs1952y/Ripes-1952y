@@ -8,6 +8,7 @@
 namespace vsrtl {
 namespace core {
 using namespace Ripes;
+using common1sfinal::RdSel;
 
 template <unsigned XLEN>
 class CS1952y6sForward : public Component {

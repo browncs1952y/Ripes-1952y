@@ -8,6 +8,7 @@
 
 namespace vsrtl {
 namespace core {
+namespace cs1952y1snotes {
 using namespace Ripes;
 
 template <unsigned XLEN>
@@ -233,5 +234,6 @@ public:
   OUTPUTPORT(jump, 1);
 };
 
+} // namespace cs1952y1snotes
 } // namespace core
 } // namespace vsrtl

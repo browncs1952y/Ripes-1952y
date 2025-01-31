@@ -12,9 +12,9 @@
 #include "../../RISC-V/rv_memory.h"
 #include "../../RISC-V/rv_registerfile.h"
 
-#include "../single_stage_cpu/cs1952y1s_control.h"
-#include "../single_stage_cpu/cs1952y1s_decode.h"
-#include "../single_stage_cpu/cs1952y1s_enums.h"
+#include "../common/cs1952y1s_control.h"
+#include "../common/cs1952y1s_decode.h"
+#include "../common/cs1952y1s_enums.h"
 #include "../single_stage_cpu/cs1952y_alu.h"
 
 #include "cs1952y4s_forward.h"
@@ -29,6 +29,14 @@
 namespace vsrtl {
 namespace core {
 using namespace Ripes;
+using common1sfinal::CS1952y1sControl;
+using common1sfinal::CS1952y1sDecode;
+using common1sfinal::ALU1Sel;
+using common1sfinal::ALU2Sel;
+using common1sfinal::ImmSel;
+using common1sfinal::RdSel;
+using common1sfinal::PCAdd1;
+using common1sfinal::PCSel;
 
 template <typename XLEN_T>
 class CS1952y4sCPU : public RipesVSRTLProcessor {

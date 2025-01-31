@@ -8,7 +8,7 @@
 
 namespace vsrtl {
 namespace core {
-namespace cs1952y1snotes {
+namespace common1sfinal {
 using namespace Ripes;
 
 template <unsigned XLEN>
@@ -81,18 +81,48 @@ public:
         }
       } else if (opcode.uValue() == 0b0000011) { // load
         return ALUOp::ADD;
+      } else if (opcode.uValue() == 0b0100011) { // store
+        return ALUOp::ADD;
+      } else if (opcode.uValue() == 0b0010111) { // AUIPC
+        return ALUOp::ADD;
+      } else if (opcode.uValue() == 0b1100011) { // branches
+        switch (funct3.uValue()) {
+        case 0b000: // BEQ
+        case 0b001: // BNE
+          return ALUOp::SUB;
+        case 0b100: // BLT
+        case 0b101: // BGE
+          return ALUOp::LT;
+        case 0b110: // BLTU
+        case 0b111: // BGEU
+          return ALUOp::LTU;
+        default:
+          throw std::runtime_error("Invalid funct3 field");
+        }
       } else {
         return ALUOp::NOP;
         // throw std::runtime_error("Opcode not recognized");
       }
     }; // alu_ctrl
 
+    alu1_sel << [=] {
+      switch (opcode.uValue()) {
+      case 0b0010111: // AUIPC
+        return ALU1Sel::PC;
+      default:
+        return ALU1Sel::REG1;
+      }
+    }; // alu1_sel
+
     alu2_sel << [=] {
       switch (opcode.uValue()) {
       case 0b0010011: // I-type
       case 0b0000011: // Load
+      case 0b0100011: // Store
+      case 0b0010111: // AUIPC
         return ALU2Sel::IMM;
       case 0b0110011: // R-type
+      case 0b1100011: // B-type
         return ALU2Sel::REG2;
       default:
         return ALU2Sel::IMM;
@@ -108,8 +138,16 @@ public:
           return ImmSel::I;
         }
       case 0b0110111: // LUI
+      case 0b0010111: // AUIPC
         return ImmSel::U;
+      case 0b0100011: // Store
+        return ImmSel::S;
+      case 0b1101111: // JAL
+        return ImmSel::J;
+      case 0b1100011: // Branches
+        return ImmSel::B;
       case 0b0000011: // Loads
+      case 0b1100111: // JALR
       default:
         return ImmSel::I;
       }
@@ -121,6 +159,10 @@ public:
         return RdSel::IMM;
       case 0b0000011: // Loads
         return RdSel::MEM;
+      case 0b1101111: // JAL
+      case 0b1100111: // JALR
+        return RdSel::PC_L;
+      case 0b0010111: // AUIPC
       default:
         return RdSel::ALU;
       }
@@ -142,10 +184,73 @@ public:
         default:
           throw std::runtime_error("Load width not recognized for 32-bit CPU");
         }
+      } else if (opcode.uValue() == 0b0100011) { // Stores
+        switch (funct3.uValue()) {
+        case 0b000: // SB
+          return MemOp::SB;
+        case 0b001: // SH
+          return MemOp::SH;
+        case 0b010: // SW
+          return MemOp::SW;
+        default:
+          throw std::runtime_error("Store width not recognized for 32-bit CPU");
+        }
       } else {
         return MemOp::NOP;
       }
     }; // mem_op
+
+    reg_w << [=] {
+      switch (opcode.uValue()) {
+      case 0b0010011: // register-immediate
+      case 0b0110011: // register-register
+      case 0b0110111: // LUI
+      case 0b0000011: // load
+      case 0b1101111: // JAL
+      case 0b1100111: // JALR
+      case 0b0010111: // AUIPC
+        return 1;
+      case 0b0100011: // store
+      case 0b1100011: // branches
+      default:
+        return 0;
+      }
+    }; // reg_w;
+
+    mem_w << [=] { return opcode.uValue() == 0b0100011; }; // store
+
+    pc_add1 << [=] {
+      switch (opcode.uValue()) {
+      case 0b1100111: // JALR
+        return PCAdd1::RS;
+      default:
+        return PCAdd1::PC;
+      }
+    }; // pc_add1
+
+    jump << [=] {
+      return opcode.uValue() == 0b1101111 || opcode.uValue() == 0b1100111;
+    };
+    branch << [=] { return opcode.uValue() == 0b1100011; };
+
+    inv_zero << [=] {
+      if (opcode.uValue() == 0b1100011) { // Branches
+        switch (funct3.uValue()) {
+        case 0b000: // BEQ
+        case 0b101: // BGE
+        case 0b111: // BGEU
+          return 0;
+        case 0b001: // BNE
+        case 0b100: // BLT
+        case 0b110: // BLTU
+          return 1;
+        default:
+          throw std::runtime_error("Invalid funct3 field");
+        }
+      } else {
+        return 0; // don't care
+      }
+    }; // inv_zero
   }
 
   INPUTPORT(opcode, 7);
@@ -153,13 +258,22 @@ public:
   INPUTPORT(funct7, 7);
 
   OUTPUTPORT_ENUM(alu_ctrl, ALUOp);
+  OUTPUTPORT_ENUM(alu1_sel, ALU1Sel);
   OUTPUTPORT_ENUM(alu2_sel, ALU2Sel);
   OUTPUTPORT_ENUM(imm_sel, ImmSel);
   OUTPUTPORT_ENUM(rd_sel, RdSel);
 
   OUTPUTPORT_ENUM(mem_op, MemOp);
+  OUTPUTPORT(reg_w, 1);
+  OUTPUTPORT(mem_w, 1);
+
+  OUTPUTPORT_ENUM(pc_add1, PCAdd1);
+
+  OUTPUTPORT(jump, 1);
+  OUTPUTPORT(branch, 1);
+  OUTPUTPORT(inv_zero, 1);
 };
 
-} // namespace cs1952y1snotes
+} // namespace common1sfinal
 } // namespace core
 } // namespace vsrtl

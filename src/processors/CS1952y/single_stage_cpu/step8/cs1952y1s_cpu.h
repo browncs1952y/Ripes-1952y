@@ -19,6 +19,7 @@
 
 namespace vsrtl {
 namespace core {
+namespace cs1952y1snotes {
 using namespace Ripes;
 
 template <typename XLEN_T>
@@ -252,5 +253,6 @@ private:
   ProcessorStructure m_structure = {{0, 1}};
 };
 
+} // namespace cs1952y1snotes
 } // namespace core
 } // namespace vsrtl

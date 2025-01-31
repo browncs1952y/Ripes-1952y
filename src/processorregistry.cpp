@@ -94,7 +94,7 @@ ProcessorRegistry::ProcessorRegistry() {
        ":/layouts/CS1952y/single_stage_cpu/layouts/cs1952y_cpu_layout_7.json",
        {{{0, 0}, QPointF{0.1, 0}}}}};
   defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
-  addProcessor(ProcInfo<vsrtl::core::CS1952y1sCPU<uint32_t>>(
+  addProcessor(ProcInfo<vsrtl::core::cs1952y1snotes::CS1952y1sCPU<uint32_t>>(
       ProcessorID::CS1952y1s, "CS1952y 1s CPU",
       "Single-stage CPU (built from scratch in CS1952y!)", layouts,
       defRegVals));

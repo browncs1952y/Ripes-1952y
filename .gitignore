@@ -14,7 +14,7 @@ ui_*
 qrc_*
 
 # Executables & libraries
-Ripes
+Ripes*
 RipesTest
 libRipesLib.a
 

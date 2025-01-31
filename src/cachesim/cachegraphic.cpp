@@ -671,10 +671,10 @@ void CacheGraphic::updateHighlighting(
     hitRectItem->setZValue(-1);
     if (transaction.isHit) {
       hitRectItem->setOpacity(0.4);
-      hitRectItem->setBrush(Qt::green);
+      hitRectItem->setBrush(QColor{87,196,173});
     } else {
       hitRectItem->setOpacity(0.8);
-      hitRectItem->setBrush(Qt::red);
+      hitRectItem->setBrush(QColor{219,67,37});
     }
   }
 }

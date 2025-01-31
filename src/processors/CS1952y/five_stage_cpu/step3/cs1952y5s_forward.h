@@ -4,11 +4,12 @@
 #include "VSRTL/core/vsrtl_component.h"
 #include <iostream>
 
-#include "../single_stage_cpu/cs1952y1s_enums.h"
+#include "../common/cs1952y1s_enums.h"
 
 namespace vsrtl {
 namespace core {
 using namespace Ripes;
+using common1sfinal::RdSel;
 
 template <unsigned XLEN>
 class CS1952y5sForward : public Component {

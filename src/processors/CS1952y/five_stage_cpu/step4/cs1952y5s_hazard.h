@@ -6,6 +6,8 @@
 namespace vsrtl {
 namespace core {
 using namespace Ripes;
+using common1sfinal::ALU1Sel;
+using common1sfinal::ALU2Sel;
 
 template <unsigned XLEN>
 class CS1952y5sHazard : public Component {

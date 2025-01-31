@@ -6,6 +6,7 @@
 
 namespace vsrtl {
 namespace core {
+namespace cs1952y1snotes {
 using namespace Ripes;
 
 template <unsigned XLEN>
@@ -64,6 +65,6 @@ public:
   OUTPUTPORT(funct7, 7);
   OUTPUTPORT_ENUM(ecall, RVInstr);
 };
-
+} // namespace cs1952y1snotes
 } // namespace core
 } // namespace vsrtl
