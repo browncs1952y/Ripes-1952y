@@ -20,7 +20,7 @@
 #include "cs1952y4s_forward.h"
 #include "cs1952y4s_hazard.h"
 
-#include "../five_stage_cpu/cs1952y5s_enums.h"
+#include "cs1952y4s_enums.h"
 
 #include "../five_stage_cpu/cs1952y_exmem.h"
 #include "../five_stage_cpu/cs1952y_memwb.h"
@@ -80,19 +80,22 @@ public:
     // Hazards
     decode->rs1 >> hazard_unit->rs1_id;
     decode->rs2 >> hazard_unit->rs2_id;
-    control->alu1_sel >> hazard_unit->rs1_sel;
-    control->alu2_sel >> hazard_unit->rs2_sel;
+    control->alu1_sel >> hazard_unit->alu1_sel;
+    control->alu2_sel >> hazard_unit->alu2_sel;
     iex_reg->rd_id_out >> hazard_unit->iex_rd_id;
     iex_reg->mem_op_out >> hazard_unit->iex_mem_op;
     exmem_reg->rd_id_out >> hazard_unit->exmem_rd_id;
     exmem_reg->mem_op_out >> hazard_unit->exmem_mem_op;
+    memwb_reg->rd_id_out >> hazard_unit->memwb_rd_id;
     j_or_b->out >> hazard_unit->jump_or_branch;
 
     hazard_unit->iex_clear >> iex_reg->clear;
     hazard_unit->exmem_clear >> exmem_reg->clear;
+    hazard_unit->memwb_clear >> memwb_reg->clear;
     hazard_unit->pc_enable >> pc_reg->enable;
     hazard_unit->iex_enable >> iex_reg->enable;
     hazard_unit->exmem_enable >> exmem_reg->enable;
+    hazard_unit->memwb_enable >> memwb_reg->enable;
 
     // Immediate
     decode->imm_I >> imm_sel->get(ImmSel::I);
@@ -142,16 +145,16 @@ public:
     memwb_reg->rd_id_out >> forward->memwb_rd_id;
     memwb_reg->reg_wr_out >> forward->memwb_reg_wr;
 
-    exmem_reg->imm_out >> fwd1_sel->get(FwdSel::ExMemImm);
-    exmem_reg->alu_res_out >> fwd1_sel->get(FwdSel::ExMemAlu);
-    rd_sel->out >> fwd1_sel->get(FwdSel::WBMux);
-    registers->r1_out >> fwd1_sel->get(FwdSel::NoFwd);
+    exmem_reg->imm_out >> fwd1_sel->get(Fwd4sSel::ExMemImm);
+    exmem_reg->alu_res_out >> fwd1_sel->get(Fwd4sSel::ExMemAlu);
+    rd_sel->out >> fwd1_sel->get(Fwd4sSel::WBMux);
+    registers->r1_out >> fwd1_sel->get(Fwd4sSel::NoFwd);
     forward->fwd1_sel >> fwd1_sel->select;
 
-    exmem_reg->imm_out >> fwd2_sel->get(FwdSel::ExMemImm);
-    exmem_reg->alu_res_out >> fwd2_sel->get(FwdSel::ExMemAlu);
-    rd_sel->out >> fwd2_sel->get(FwdSel::WBMux);
-    registers->r2_out >> fwd2_sel->get(FwdSel::NoFwd);
+    exmem_reg->imm_out >> fwd2_sel->get(Fwd4sSel::ExMemImm);
+    exmem_reg->alu_res_out >> fwd2_sel->get(Fwd4sSel::ExMemAlu);
+    rd_sel->out >> fwd2_sel->get(Fwd4sSel::WBMux);
+    registers->r2_out >> fwd2_sel->get(Fwd4sSel::NoFwd);
     forward->fwd2_sel >> fwd2_sel->select;
 
     fwd1_sel->out >> alu_op1_sel->get(ALU1Sel::REG1);
@@ -229,8 +232,6 @@ public:
     exmem_reg->rd_sel_out >> memwb_reg->rd_sel_in;
     exmem_reg->reg_wr_out >> memwb_reg->reg_wr_in;
 
-    0 >> memwb_reg->clear;
-    1 >> memwb_reg->enable;
     exmem_reg->valid_out >> memwb_reg->valid_in;
 
     // ** WRITEBACK **
@@ -296,8 +297,8 @@ public:
 
   // Forwarding
   SUBCOMPONENT(forward, CS1952y4sForward<XLEN>);
-  SUBCOMPONENT(fwd1_sel, TYPE(EnumMultiplexer<FwdSel, XLEN>));
-  SUBCOMPONENT(fwd2_sel, TYPE(EnumMultiplexer<FwdSel, XLEN>));
+  SUBCOMPONENT(fwd1_sel, TYPE(EnumMultiplexer<Fwd4sSel, XLEN>));
+  SUBCOMPONENT(fwd2_sel, TYPE(EnumMultiplexer<Fwd4sSel, XLEN>));
 
   // Hazards
   SUBCOMPONENT(hazard_unit, CS1952y4sHazard<XLEN>);

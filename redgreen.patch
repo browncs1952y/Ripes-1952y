@@ -62,3 +62,15 @@ diff -ru ./external/VSRTL/graphics/vsrtl_wiregraphic.cpp ../dev25-Ripes-copy/ext
      painter->setPen(pen);
      painter->setBrush(Qt::transparent);
      painter->drawRect(shape().boundingRect().adjusted(
+diff -ru ./external/VSRTL/graphics/vsrtl_graphics_defines.h ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_graphics_defines.h
+--- ./external/VSRTL/graphics/vsrtl_graphics_defines.h  2025-02-05 18:13:31.707290946 -0500
++++ ../dev25-Ripes-copy/external/VSRTL/graphics/vsrtl_graphics_defines.h    2025-02-05 18:15:49.717937165 -0500
+@@ -28,7 +28,7 @@
+ 
+ constexpr QColor WIRE_DEFAULT_COLOR = {0x63, 0x63, 0x63};
+ constexpr QColor WIRE_SELECTED_COLOR = {0xFE, 0xF1, 0x60};
+-constexpr QColor WIRE_BOOLHIGH_COLOR = {0x6E, 0xEB, 0x83};
++constexpr QColor WIRE_BOOLHIGH_COLOR = {87,196,173};
+ constexpr QColor WIRE_HIGH_COLOR = {0xFF, 0xD5, 0x2E};
+ constexpr QColor BACKGROUND_COLOR = {0x22, 0x22, 0x22};
+ constexpr QColor BUTTON_COLLAPSE_COLOR = {0x6b, 0xc8, 0xff};

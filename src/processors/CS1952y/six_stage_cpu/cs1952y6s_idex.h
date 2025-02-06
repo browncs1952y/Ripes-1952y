@@ -14,9 +14,9 @@ using common1sfinal::RdSel;
 using common1sfinal::PCAdd1;
 
 template <unsigned XLEN>
-class CS1952yRREx : public Component {
+class CS1952y6sIDEx : public Component {
 public:
-  CS1952yRREx(const std::string &name, SimComponent *parent)
+  CS1952y6sIDEx(const std::string &name, SimComponent *parent)
       : Component(name, parent) {
     setDescription("Instruction Decode/Execute stage separating register");
     CONNECT_REGISTERED_CLEN_INPUT(pc4, clear, enable); // IF -> WB
@@ -53,9 +53,9 @@ public:
   REGISTERED_CLEN_INPUT(reg1, XLEN);
   REGISTERED_CLEN_INPUT(reg2, XLEN);
   REGISTERED_CLEN_INPUT(imm, XLEN);
-  REGISTERED_CLEN_INPUT(rd_id, 5);
   REGISTERED_CLEN_INPUT(rs1_id, 5);
   REGISTERED_CLEN_INPUT(rs2_id, 5);
+  REGISTERED_CLEN_INPUT(rd_id, 5);
   REGISTERED_CLEN_INPUT(alu1_sel, ALU1Sel::width());
   REGISTERED_CLEN_INPUT(alu2_sel, ALU2Sel::width());
   REGISTERED_CLEN_INPUT(alu_op, ALUOp::width());

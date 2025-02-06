@@ -2,7 +2,7 @@
 
 #include "../../RISC-V/riscv.h"
 #include "VSRTL/core/vsrtl_component.h"
-#include "../five_stage_cpu/cs1952y5s_enums.h"
+#include "cs1952y4s_enums.h"
 #include <iostream>
 
 namespace vsrtl {
@@ -15,9 +15,9 @@ class CS1952y4sForward : public Component {
 public:
   CS1952y4sForward(std::string name, SimComponent *parent)
       : Component(name, parent) {
-    fwd1_sel << [=] { return FwdSel::NoFwd; }; // fwd1_sel
+    fwd1_sel << [=] { return Fwd4sSel::NoFwd; }; // fwd1_sel
 
-    fwd2_sel << [=] { return FwdSel::NoFwd; }; // fwd2_sel
+    fwd2_sel << [=] { return Fwd4sSel::NoFwd; }; // fwd2_sel
   }
 
   INPUTPORT(idex_rs1_id, 5);
@@ -30,8 +30,8 @@ public:
   INPUTPORT(memwb_rd_id, 5);
   INPUTPORT(memwb_reg_wr, 1);
 
-  OUTPUTPORT_ENUM(fwd1_sel, FwdSel);
-  OUTPUTPORT_ENUM(fwd2_sel, FwdSel);
+  OUTPUTPORT_ENUM(fwd1_sel, Fwd4sSel);
+  OUTPUTPORT_ENUM(fwd2_sel, Fwd4sSel);
 };
 
 } // namespace core

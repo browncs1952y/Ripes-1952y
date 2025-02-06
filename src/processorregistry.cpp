@@ -99,11 +99,11 @@ ProcessorRegistry::ProcessorRegistry() {
       "Single-stage CPU (built from scratch in CS1952y!)", layouts,
       defRegVals));
 
-  std::map<StageIndex, QPointF> stageLabelPosns = {{{0, 0}, QPointF{0.05, 2}},
-                                                   {{0, 1}, QPointF{0.28, 2}},
-                                                   {{0, 2}, QPointF{0.54, 2}},
-                                                   {{0, 3}, QPointF{0.74, 2}},
-                                                   {{0, 4}, QPointF{0.88, 2}}};
+  std::map<StageIndex, QPointF> stageLabelPosns = {{{0, 0}, QPointF{0.05, 0.3}},
+                                                   {{0, 1}, QPointF{0.28, 0.3}},
+                                                   {{0, 2}, QPointF{0.54, 0.3}},
+                                                   {{0, 3}, QPointF{0.74, 0.3}},
+                                                   {{0, 4}, QPointF{0.88, 0.3}}};
   layouts = {
       {"Standard (Step 4)",
        ":/layouts/CS1952y/five_stage_cpu/cs1952y5s_layout.json",
@@ -124,10 +124,10 @@ ProcessorRegistry::ProcessorRegistry() {
 
   layouts = {{"Standard",
               ":/layouts/CS1952y/four_stage_cpu/cs1952y4s_layout.json",
-              {{{0, 0}, QPointF{0.2, 2}},
-               {{0, 1}, QPointF{0.5, 2}},
-               {{0, 2}, QPointF{0.74, 2}},
-               {{0, 3}, QPointF{0.88, 2}}}}};
+              {{{0, 0}, QPointF{0.2, 0.3}},
+               {{0, 1}, QPointF{0.5, 0.3}},
+               {{0, 2}, QPointF{0.74, 0.3}},
+               {{0, 3}, QPointF{0.88, 0.3}}}}};
   defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
   addProcessor(ProcInfo<vsrtl::core::CS1952y4sCPU<uint32_t>>(
       ProcessorID::CS1952y4s, "CS1952y 4s CPU",
@@ -135,12 +135,12 @@ ProcessorRegistry::ProcessorRegistry() {
 
   layouts = {{"Standard",
               ":/layouts/CS1952y/six_stage_cpu/cs1952y6s_layout.json",
-              {{{0, 0}, QPointF{0.03, 2}},
-               {{0, 1}, QPointF{0.21, 2}},
-               {{0, 2}, QPointF{0.37, 2}},
-               {{0, 3}, QPointF{0.55, 2}},
-               {{0, 4}, QPointF{0.74, 2}},
-               {{0, 5}, QPointF{0.88, 2}}}}};
+              {{{0, 0}, QPointF{0.03, 0.3}},
+               {{0, 1}, QPointF{0.22, 0.3}},
+               {{0, 2}, QPointF{0.44, 0.3}},
+               {{0, 3}, QPointF{0.63, 0.3}},
+               {{0, 4}, QPointF{0.75, 0.3}},
+               {{0, 5}, QPointF{0.88, 0.3}}}}};
   defRegVals = {{RVISA::GPR, {{2, 0x7ffffff0}, {3, 0x10000000}}}};
   addProcessor(ProcInfo<vsrtl::core::CS1952y6sCPU<uint32_t>>(
       ProcessorID::CS1952y6s, "CS1952y 6s CPU",
