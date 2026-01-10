@@ -15,7 +15,7 @@ const std::map<QString, QVariant> s_defaultSettings = {
     {RIPES_SETTING_FORMATTER_PATH, "clang-format"},
     {RIPES_SETTING_FORMAT_ON_SAVE, false},
     {RIPES_SETTING_FORMATTER_ARGS, "--style=file --fallback-style=LLVM"},
-    {RIPES_SETTING_CCARGS, "-O0 -g"},
+    {RIPES_SETTING_CCARGS, "-O0 -march=rv32im -mabi=ilp32 -nostdlib -g"},
     {RIPES_SETTING_LDARGS,
      "-static -lm"}, // Ensure statically linked executable + link with math
                      // library
